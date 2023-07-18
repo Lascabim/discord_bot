@@ -1,0 +1,34 @@
+// streams.js
+
+const streamMessage = async (client, message) => {
+    const { EmbedBuilder } = require('discord.js');
+  
+    const lascaId = '326836813215956994';
+  
+    const embed = new EmbedBuilder()
+      .setTitle('**Streams Channel**')
+      .setThumbnail(
+        'https://media.discordapp.net/attachments/942450101073358928/1130973075115094016/profil.jpg?width=662&height=662'
+      )
+      .setColor('#008cff')
+      .setDescription(`Feel free to **share** your streams in this **channel**.
+  
+Best regards, **Sylox**.
+  
+|| @everyone ||`);
+  
+    if (message.author.id === lascaId) {
+      const channelId = '1130274423673454602'; // Replace with your desired channel ID
+      const channel = client.channels.cache.get(channelId);
+  
+      message.delete();
+  
+      if (channel) {
+        const sentMessage = await channel.send({ embeds: [embed] });  
+      } else {
+        console.log(`Invalid channel ID: ${channelId}`);
+      }
+    }
+};
+  
+ module.exports = { streamMessage };  
