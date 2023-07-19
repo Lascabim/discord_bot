@@ -3,6 +3,7 @@ const { handleVerification } = require('./commands/verification');
 const { streamMessage } = require('./commands/streams');
 const { inviteMessage } = require('./commands/invite');
 const { addMessage } = require('./commands/advertising');
+const { logsMessage } = require('./commands/logs');
 
 const client = new Client({
     intents: [
@@ -35,6 +36,10 @@ client.on('messageCreate', async (message) => {
 
     if (message.content === '!advertising') {
         addMessage(client, message);
+    }
+    
+    if (message.content === '!logs') {
+        logsMessage(client, message);
     }
 });
 
