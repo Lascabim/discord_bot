@@ -8,6 +8,7 @@ const { addMessage } = require('./commands/advertising');
 const { logsMessage } = require('./commands/logs');
 const { deleteMessage } = require('./commands/delete');
 const { soonMessage } = require('./commands/soon');
+const { optMessage } = require('./commands/opt');
 
 
 // PACKAGES
@@ -68,6 +69,10 @@ client.on('messageCreate', async (message) => {
         soonMessage(client, message);
     }
 
+    if (message.content === '!opt') {
+        optMessage(client, message);
+    }
+
     // PACKAGES
 
     if (message.content === '!scuba') {
@@ -85,22 +90,27 @@ client.on('messageCreate', async (message) => {
     }
 });
 
-const reactedMessages = new Set();
 
 client.on('messageReactionAdd', async (reaction, user) => {
-  // Check if the user who reacted is a bot or if the reaction is on a cached message
-  if (user.bot || reactedMessages.has(reaction.message.id)) return;
+    console.log(`Reaction added by ${user.tag} to message with ID: ${reaction.message.id}`);
+    console.log(`Emoji name: ${reaction.emoji.name}`);
 
-  reactedMessages.add(reaction.message.id);
-  console.log("HEY");
-
-  // Rest of your code here (e.g., assigning roles, etc.)
+    if (reaction.message.id === 1131576176838713374 && reaction.emoji.name === '✅') {
+      try {
+        const guild = reaction.message.guild;
+        const member = guild.members.cache.get(user.id);
+        const role = guild.roles.cache.get(966050034837757977);
+  
+        if (role && member) {
+          await member.roles.add(role);
+          console.log(`Added role "${role.name}" to ${member.user.tag}`);
+        } else {
+          console.log('Role or member not found.');
+        }
+      } catch (err) {
+        console.error('Error occurred while adding the role:', err);
+      }
+    }
 });
-
-// Optional: If you want to remove message IDs from the cache after a specific time
-const cleanupInterval = 5 * 60 * 1000; // 5 minutes
-setInterval(() => {
-  reactedMessages.clear();
-}, cleanupInterval);
 
 client.login('MTExODA4NTU5MDE4MTc0MDU0NA.GqFjl0.jDc1LxtmlYHdyO6ZYPrp4AWpKbz7iMDmtppIe4');

@@ -17,7 +17,7 @@ https://imgur.com/zqm0uXZ
 
 Every script **can have** logs, they just need to be **added**.
 
-Contact us via ticket https://discord.com/channels/966050034816782366/969680226026139679
+Contact us via ticket https://discord.com/channels/966050034816782366/969700871749373952
   
 Best regards, **Sylox**.
   

@@ -41,27 +41,27 @@ Best regards, react to this message to proceed.
   
       if (channel) {
         const sentMessage = await channel.send({ embeds: [embed] });
-        await sentMessage.react('✅');
+        // await sentMessage.react('✅');
   
-        const filter = (reaction, user) => reaction.emoji.name === '✅' && !user.bot;
-        const collector = sentMessage.createReactionCollector({ filter });
+        // const filter = (reaction, user) => reaction.emoji.name === '✅' && !user.bot;
+        // const collector = sentMessage.createReactionCollector({ filter });
   
-        collector.on('collect', (reaction, user) => {
-          const guild = reaction.message.guild;
-          const roleId = '966050034837757977'; // Replace with the ID of the role you want to assign
-          const role = guild.roles.cache.get(roleId);
+        // collector.on('collect', (reaction, user) => {
+        //   const guild = reaction.message.guild;
+        //   const roleId = '966050034837757977'; // Replace with the ID of the role you want to assign
+        //   const role = guild.roles.cache.get(roleId);
   
-          if (role) {
-            const member = guild.members.cache.get(user.id);
+        //   if (role) {
+        //     const member = guild.members.cache.get(user.id);
   
-            if (member && !member.roles.cache.has(roleId)) {
-              member.roles
-                .add(role)
-                .then(() => console.log(`Assigned role ${role.name} to ${user.tag}`))
-                .catch(console.error);
-            }
-          }
-        });
+        //     if (member && !member.roles.cache.has(roleId)) {
+        //       member.roles
+        //         .add(role)
+        //         .then(() => console.log(`Assigned role ${role.name} to ${user.tag}`))
+        //         .catch(console.error);
+        //     }
+        //   }
+        // });
       } else {
         console.log(`Invalid channel ID: ${channelId}`);
       }
