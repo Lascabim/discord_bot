@@ -9,6 +9,7 @@ const { logsMessage } = require('./commands/logs');
 const { deleteMessage } = require('./commands/delete');
 const { soonMessage } = require('./commands/soon');
 const { optMessage } = require('./commands/opt');
+const { youtMessage } = require('./commands/youtube');
 
 
 // PACKAGES
@@ -71,6 +72,13 @@ client.on('messageCreate', async (message) => {
 
     if (message.content === '!opt') {
         optMessage(client, message);
+    }
+
+    const mesAr = message.content.split(" ");
+    let youtCommand = mesAr[0];
+
+    if (youtCommand === '!youtube') {
+        youtMessage(client, message);
     }
 
     // PACKAGES
