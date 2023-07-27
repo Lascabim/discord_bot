@@ -14,6 +14,7 @@ const { youtMessage } = require('./commands/youtube');
 
 // PACKAGES
 const { scubaMessage } = require('./packages/scuba');
+const { leaderMessage } = require('./packages/leaderboard');
 
 // PARTNER
 const { karmaPartner } = require('./partners/karma');
@@ -86,6 +87,11 @@ client.on('messageCreate', async (message) => {
     if (message.content === '!scuba') {
         scubaMessage(client, message);
     }
+
+    if (message.content === '!leader') {
+        leaderMessage(client, message);
+    }
+
 
     // PARTNERS
 
