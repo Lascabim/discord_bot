@@ -10,6 +10,7 @@ const { deleteMessage } = require('./commands/delete');
 const { soonMessage } = require('./commands/soon');
 const { optMessage } = require('./commands/opt');
 const { youtMessage } = require('./commands/youtube');
+const { globalMessage } = require('./commands/global');
 
 
 // PACKAGES
@@ -73,6 +74,10 @@ client.on('messageCreate', async (message) => {
 
     if (message.content === '!opt') {
         optMessage(client, message);
+    }
+
+    if (message.content === '!globalMessage') {
+        globalMessage(client, message);
     }
 
     const mesAr = message.content.split(" ");
