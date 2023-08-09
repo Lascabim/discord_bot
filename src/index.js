@@ -16,6 +16,7 @@ const { globalMessage } = require('./commands/global');
 // PACKAGES
 const { scubaMessage } = require('./packages/scuba');
 const { leaderMessage } = require('./packages/leaderboard');
+const { postMessage } = require('./packages/post');
 
 // PARTNER
 const { karmaPartner } = require('./partners/karma');
@@ -95,6 +96,10 @@ client.on('messageCreate', async (message) => {
 
     if (message.content === '!leader') {
         leaderMessage(client, message);
+    }
+
+    if (message.content === '!posts') {
+        postMessage(client, message);
     }
 
 

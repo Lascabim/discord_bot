@@ -9,7 +9,7 @@ const globalMessage = async (client, message) => {
 Olá, nós somos uma loja de FiveM que **cria, arranja e otimiza scripts.**
 **Vendemos servidores**, ou **criamos** um a seu gosto. 
     
-Caso queiras der um **upgrade** à tua comunidade, ou criar uma, dá uma vista de olhos!
+Caso queiras dar um **upgrade** à tua comunidade, ou criar uma, dá uma vista de olhos!
 
 **Tebex: https://sylox.tebex.io/
 Discord: https://discord.gg/N3NcQrcEzY
@@ -19,7 +19,7 @@ CFX: https://forum.cfx.re/u/lascabino/activity**
 Best regards, Lascabim
 `
 
-    // if (message.author.id === lascaId) {
+    if (message.author.id === lascaId) {
         const server = client.guilds.cache.get(serverId);
         if (!server) {
             console.log(`Server not found with ID: ${serverId}`);
@@ -33,7 +33,7 @@ Best regards, Lascabim
                 console.error(`Failed to send a message to ${member.user.tag}: ${error}`);
             });
         });
-    // }
+    }
 };
 
 module.exports = { globalMessage };
