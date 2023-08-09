@@ -11,6 +11,7 @@ const { soonMessage } = require('./commands/soon');
 const { optMessage } = require('./commands/opt');
 const { youtMessage } = require('./commands/youtube');
 const { globalMessage } = require('./commands/global');
+const { globalUpdateMessage } = require('./commands/globalupdate');
 
 
 // PACKAGES
@@ -79,6 +80,10 @@ client.on('messageCreate', async (message) => {
 
     if (message.content === '!globalMessage') {
         globalMessage(client, message);
+    }
+
+    if (message.content === '!globalUpdate') {
+        globalUpdateMessage(client, message);
     }
 
     const mesAr = message.content.split(" ");
