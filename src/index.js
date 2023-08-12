@@ -12,12 +12,14 @@ const { optMessage } = require('./commands/opt');
 const { youtMessage } = require('./commands/youtube');
 const { globalMessage } = require('./commands/global');
 const { globalUpdateMessage } = require('./commands/globalupdate');
+const { newscriptMessage } = require('./commands/newscript');
 
 
 // PACKAGES
 const { scubaMessage } = require('./packages/scuba');
 const { leaderMessage } = require('./packages/leaderboard');
 const { postMessage } = require('./packages/post');
+const { airdropMessage } = require('./packages/airdrop');
 
 // PARTNER
 const { karmaPartner } = require('./partners/karma');
@@ -93,6 +95,10 @@ client.on('messageCreate', async (message) => {
         youtMessage(client, message);
     }
 
+    if (message.content === '!newscript') {
+        newscriptMessage(client, message);
+    }
+
     // PACKAGES
 
     if (message.content === '!scuba') {
@@ -105,6 +111,10 @@ client.on('messageCreate', async (message) => {
 
     if (message.content === '!posts') {
         postMessage(client, message);
+    }
+
+    if (message.content === '!airdrop') {
+        airdropMessage(client, message);
     }
 
 
